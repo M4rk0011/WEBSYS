@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 40px 16px; background: #f2f5f4; color: #233b33; font-family: Arial, sans-serif; line-height: 1.5; }
+.card { max-width: 450px; margin: 20px auto; padding: 32px; background: white; border: 1px solid #dce5df; border-radius: 12px; }
+.brand { margin-top: 0; font-size: 12px; font-weight: bold; color: #237052; letter-spacing: 1px; }
+h1 { font-size: 27px; line-height: 1.25; margin-bottom: 8px; overflow-wrap: anywhere; }
+h2 { font-size: 18px; }
+.muted, small { color: #63746b; }
+label { display: block; margin: 17px 0 6px; font-size: 14px; font-weight: bold; }
+input { width: 100%; padding: 11px; border: 1px solid #b9c9bf; border-radius: 6px; font: inherit; }
+button { width: 100%; margin-top: 24px; padding: 12px; border: 0; border-radius: 6px; background: #216348; color: white; font: inherit; cursor: pointer; }
+button:hover { background: #174c36; }
+a { color: #216348; font-weight: bold; }
+:focus-visible { outline: 3px solid #cb9a32; outline-offset: 3px; }
+.footer { text-align: center; margin-bottom: 0; font-size: 14px; }
+.message, .notice { border-radius: 6px; padding: 12px; font-size: 14px; }
+.error { color: #862c28; background: #fff0ee; border: 1px solid #edc6c1; }
+.success { color: #205d3b; background: #eef8f0; border: 1px solid #bcdac3; }
+.notice { background: #f5f3e9; color: #665b31; }
+.dashboard { max-width: 620px; }
+dt { font-size: 12px; color: #63746b; margin-top: 14px; }
+dd { margin: 3px 0 0; overflow-wrap: anywhere; }
+@media (max-width: 480px) { body { padding: 16px 12px; } .card { margin: 8px auto; padding: 24px; } }

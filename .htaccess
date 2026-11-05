@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "(?i)^(database\.sql|README\.md|dbconn\.php|session\.php|\.gitignore)$">
+    Require all denied
+</FilesMatch>
