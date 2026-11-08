@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="560" viewBox="0 0 860 560" role="img" aria-labelledby="title desc">
+<title id="title">Connected barangay community</title>
+<desc id="desc">Original illustration of community buildings, leafy trees, and Baguio mountain scenery.</desc>
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dbf4df"/><stop offset="1" stop-color="#bde5c4"/></linearGradient>
+<linearGradient id="hall" x1="0" x2="1"><stop stop-color="#fbfff7"/><stop offset="1" stop-color="#e5f2dc"/></linearGradient>
+<linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#236c50"/><stop offset="1" stop-color="#124d40"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#416c49" flood-opacity=".18"/></filter>
+</defs>
+<ellipse cx="422" cy="505" rx="365" ry="33" fill="#71b78f" opacity=".19"/>
+<circle cx="548" cy="193" r="172" fill="url(#sky)" opacity=".95"/>
+<circle cx="555" cy="196" r="131" fill="none" stroke="#c0e6bf" stroke-width="2"/>
+<circle cx="555" cy="196" r="94" fill="none" stroke="#c0e6bf" stroke-width="2"/>
+<path d="M183 348 305 191l84 95 98-125 154 193H183Z" fill="#a4d2ba"/>
+<path d="m360 357 129-148 77 91 80-87 137 144H360Z" fill="#7dbb9c"/>
+<path d="M129 394c97-36 203-42 331-11 107 25 211 17 307-12v115H129Z" fill="#92c7a5"/>
+<path d="M140 443c152-41 332-42 567 1v62H140Z" fill="#5fa47e"/>
+<g filter="url(#shadow)">
+<path d="M210 319h416v160H210z" fill="url(#hall)" stroke="#c4dbbd" stroke-width="4"/>
+<path d="m170 329 248-117 249 117-12 21H180z" fill="url(#roof)"/>
+<path d="M400 243h36v-51h-36z" fill="#f8fcf3"/>
+<path d="M393 194h50v-11h-50z" fill="#2c7653"/>
+<path d="M242 346h352v20H242z" fill="#cee5c9"/>
+<path d="M275 383h81v73h-81z" fill="#e0f2df" stroke="#8ebba0" stroke-width="5"/>
+<path d="M290 394h51v53h-51z" fill="#a4d2bb"/>
+<path d="M481 383h81v73h-81z" fill="#e0f2df" stroke="#8ebba0" stroke-width="5"/>
+<path d="M495 394h52v53h-52z" fill="#a4d2bb"/>
+<path d="M391 365h58v113h-58z" fill="#4b9a70"/>
+<path d="M405 385h31v90h-31z" fill="#d8ead5"/>
+<circle cx="434" cy="431" r="4" fill="#4d8b5d"/>
+<rect x="315" y="292" width="208" height="43" rx="7" fill="#f9fff5" stroke="#b5d9b7" stroke-width="4"/>
+<text x="419" y="308" font-family="Arial,sans-serif" font-weight="800" font-size="12" text-anchor="middle" fill="#256b48">BARANGAY</text>
+<text x="419" y="324" font-family="Arial,sans-serif" font-weight="800" font-size="13" text-anchor="middle" fill="#256b48">LOWER GENERAL LUNA</text>
+<rect x="183" y="456" width="472" height="13" rx="6" fill="#adcfa5"/>
+</g>
+<g>
+<path d="M144 470V311" stroke="#527d50" stroke-width="15" stroke-linecap="round"/>
+<circle cx="135" cy="305" r="70" fill="#31845a"/><circle cx="188" cy="308" r="47" fill="#429969"/><circle cx="99" cy="340" r="44" fill="#4ba574"/><circle cx="134" cy="266" r="47" fill="#58ad78"/>
+<path d="M690 474V319" stroke="#507e51" stroke-width="14" stroke-linecap="round"/>
+<circle cx="677" cy="317" r="63" fill="#247a57"/><circle cx="720" cy="311" r="47" fill="#388a61"/><circle cx="653" cy="349" r="41" fill="#449b69"/><circle cx="682" cy="275" r="42" fill="#5cae7a"/>
+</g>
+<path d="M60 481c121-25 246-21 360-8 148 19 274 25 392-1v35H60z" fill="#b0d9af"/>
+<g fill="#f4fbec"><ellipse cx="219" cy="488" rx="9" ry="4"/><ellipse cx="239" cy="497" rx="6" ry="3"/><ellipse cx="620" cy="495" rx="8" ry="4"/><ellipse cx="646" cy="482" rx="6" ry="3"/></g>
+<g transform="translate(710 432)"><circle cx="18" cy="2" r="13" fill="#e1ad7c"/><path d="M3 30q15-14 30 0l10 55H-6z" fill="#fff4d6"/><path d="M8 84 5 116h12l11-34M29 83l4 33h11l-1-32" fill="#446d5a"/></g>
+<g transform="translate(98 441)"><circle cx="19" cy="0" r="12" fill="#e5ab79"/><path d="M4 29q16-16 30 0l8 44H-4z" fill="#ebca82"/><path d="M9 71 5 104h11l12-31M26 71l5 34h11l-3-33" fill="#416b5a"/></g>
+<g fill="#fff" opacity=".85"><circle cx="720" cy="114" r="7"/><circle cx="747" cy="146" r="4"/><circle cx="237" cy="113" r="5"/><circle cx="268" cy="157" r="3"/></g>
+</svg>

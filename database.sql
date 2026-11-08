@@ -1,4 +1,9 @@
--- Import this SQL file in phpMyAdmin. Do not paste PHP files into the SQL tab.
+-- Barangay Lower General Luna | Resident portal database
+-- Import this file through phpMyAdmin's Import tab (do not paste PHP code into SQL).
+-- Safe to re-import: existing accounts are preserved; this script has no DROP statements.
+-- Current scope: resident registration, login, and dashboard profile only.
+-- Future concern-reporting tables are intentionally not created in this design update.
+
 CREATE DATABASE IF NOT EXISTS lower_general_luna
     CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE lower_general_luna;
