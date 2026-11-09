@@ -1,18 +1,15 @@
--- Barangay Lower General Luna | Resident portal database
--- Import this file through phpMyAdmin's Import tab (do not paste PHP code into SQL).
--- Safe to re-import: existing accounts are preserved; this script has no DROP statements.
--- Current scope: resident registration, login, and dashboard profile only.
--- Future concern-reporting tables are intentionally not created in this design update.
-
-CREATE DATABASE IF NOT EXISTS lower_general_luna
-    CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE lower_general_luna;
-
-CREATE TABLE IF NOT EXISTS users (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    fullname VARCHAR(100) NOT NULL,
-    email VARCHAR(190) NOT NULL UNIQUE,
-    address VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+-- Concern Report System: XAMPP / MySQL / MariaDB
+-- Import in phpMyAdmin. Existing accounts/reports are not overwritten.
+CREATE DATABASE IF NOT EXISTS concern_report_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE concern_report_system;
+CREATE TABLE IF NOT EXISTS php_users (id VARCHAR(40) PRIMARY KEY, username VARCHAR(100) NOT NULL UNIQUE, email VARCHAR(200) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL, body TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS php_reports (id VARCHAR(40) PRIMARY KEY, body TEXT NOT NULL);
+INSERT IGNORE INTO php_users (id,username,email,password_hash,body) VALUES ('1','admin','admin@lowergeneralluna.example','$2y$10$vGhiJW9cuW6wjXUM4CgXxepVQSs0mFNf4k7r.NcWJYm7inGPaw5sW','{"id":"1","username":"admin","email":"admin@lowergeneralluna.example","role":"admin","profile":{"firstName":"System","lastName":"Administrator","phone":"+63-999-999-9999","position":"Barangay Administrator"},"createdAt":"2024-01-01","lastLogin":"2026-10-18T00:00:00","isActive":true}');
+INSERT IGNORE INTO php_users (id,username,email,password_hash,body) VALUES ('2','security','security@lowergeneralluna.example','$2y$10$8nuLcWfo42taFWLTOgmbi.LOSGWUpWCXIFmUaQtkM0cjwkhgC5LOy','{"id":"2","username":"security","email":"security@lowergeneralluna.example","role":"security","profile":{"firstName":"John","lastName":"Smith","phone":"+63-888-888-8888","position":"Barangay Personnel"},"createdAt":"2024-01-15","lastLogin":"2026-10-18T00:00:00","isActive":true}');
+INSERT IGNORE INTO php_users (id,username,email,password_hash,body) VALUES ('3','student','student@lowergeneralluna.example','$2y$10$HBprWWsftSXMg/b5tlZDqOjMm8A4nnjQnnPuy0tLIMJdsOQrQ0WEO','{"id":"3","username":"student","email":"student@lowergeneralluna.example","role":"user","profile":{"firstName":"Maria","lastName":"Santos","phone":"+63-777-777-7777","studentId":"2024-12345","department":"Community"},"createdAt":"2024-02-01","lastLogin":"2026-10-18T00:00:00","isActive":true}');
+INSERT IGNORE INTO php_users (id,username,email,password_hash,body) VALUES ('4','student1','student1@lowergeneralluna.example','$2y$10$wKp7uM9LV813gKoAzBqEreyrbdgn7U/T0hqNih4BKr5NaKHgOXj42','{"id":"4","username":"student1","email":"student1@lowergeneralluna.example","role":"user","profile":{"firstName":"Resident","lastName":"One","phone":"+63-766-766-7661","studentId":"2024-20001","department":"Community"},"createdAt":"2024-02-05","lastLogin":"2026-10-18T00:00:00","isActive":true}');
+INSERT IGNORE INTO php_users (id,username,email,password_hash,body) VALUES ('5','student2','student2@lowergeneralluna.example','$2y$10$bWW72g0Xg1EueWASfORK2uz7azRGPJu9bFoXm9pJhMaJpZcVgYrjW','{"id":"5","username":"student2","email":"student2@lowergeneralluna.example","role":"user","profile":{"firstName":"Resident","lastName":"Two","phone":"+63-766-766-7662","studentId":"2024-20002","department":"Community"},"createdAt":"2024-02-06","lastLogin":"2026-10-18T00:00:00","isActive":true}');
+INSERT IGNORE INTO php_users (id,username,email,password_hash,body) VALUES ('6','security1','security1@lowergeneralluna.example','$2y$10$LGclqXfU1FfGYN7IY4zCyO4Xv5JmWCIvgQ9DretYL1cttQmQTAcqq','{"id":"6","username":"security1","email":"security1@lowergeneralluna.example","role":"security","profile":{"firstName":"Security","lastName":"One","phone":"+63-855-855-8551","position":"Barangay Personnel"},"createdAt":"2024-02-07","lastLogin":"2026-10-18T00:00:00","isActive":true}');
+INSERT IGNORE INTO php_reports (id,body) VALUES ('1','{"id":"1","title":"Lost Property at Community Hall","description":"Resident reported laptop stolen from waiting area","category":"theft","severity":"high","status":"investigating","location":{"latitude":16.4158,"longitude":120.5965,"address":"Barangay Lower General Luna Hall","building":"Community Hall","floor":"2nd Floor","room":"Waiting Area","landmark":""},"reportedBy":"student","reportedAt":"2024-04-10T10:30:00","updatedAt":"2024-04-10T14:15:00","assignedTo":"security","images":[],"witnesses":["John Doe","Jane Smith"],"contactInfo":{"name":"Maria Santos","email":"student@lowergeneralluna.example","phone":"+63-777-777-7777","studentId":"2024-12345","department":"Community"},"additionalNotes":"Laptop was left unattended for 5 minutes","isAnonymous":false,"resolvedAt":""}');
+INSERT IGNORE INTO php_reports (id,body) VALUES ('2','{"id":"2","title":"Vandalism in Parking Lot","description":"Car windows broken in community parking area","category":"vandalism","severity":"medium","status":"reported","location":{"latitude":16.4159,"longitude":120.5961,"address":"Community Parking Area","building":"Barangay Office","landmark":"Near main entrance","floor":"","room":""},"reportedBy":"admin","reportedAt":"2024-04-11T08:45:00","updatedAt":"2024-04-11T08:45:00","images":[],"witnesses":[],"contactInfo":{"name":"John Smith","email":"security@lowergeneralluna.example","phone":"+63-888-888-8888","studentId":"","department":""},"isAnonymous":false,"resolvedAt":"","assignedTo":"","additionalNotes":""}');
+INSERT IGNORE INTO php_reports (id,body) VALUES ('3','{"id":"3","title":"Medical Emergency - Gym","description":"Resident fainted during basketball practice","category":"medical","severity":"high","status":"resolved","location":{"latitude":16.4153,"longitude":120.5988,"address":"Community Court","building":"Sports Complex","floor":"Ground Floor","room":"","landmark":""},"reportedBy":"security","reportedAt":"2024-04-09T16:20:00","updatedAt":"2024-04-09T17:30:00","resolvedAt":"2024-04-09T17:30:00","assignedTo":"admin","images":[],"witnesses":["Coach Johnson"],"contactInfo":{"name":"Anonymous Reporter","email":"anonymous@lowergeneralluna.example","phone":"","studentId":"","department":""},"additionalNotes":"Resident assisted by responders","isAnonymous":true}');
