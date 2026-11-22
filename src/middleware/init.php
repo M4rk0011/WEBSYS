@@ -11,7 +11,7 @@ $currentUser = null;
 if (isset($_SESSION["user_id"])) {
     $currentUser = findUser($_SESSION["user_id"]);
 }
-if ($currentUser && !$currentUser->isActive) {
+if (isset($_SESSION["user_id"]) && (!$currentUser || !$currentUser->isActive)) {
     unset($_SESSION["user_id"]);
     $currentUser = null;
 }

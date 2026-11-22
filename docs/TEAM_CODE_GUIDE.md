@@ -30,3 +30,11 @@ This document explains where to find each part of the group project. It does not
 - Do not edit bundled third-party code in `src/vendor/` and `public/assets/vendor/`.
 - Do not commit `config/local.php`, user uploads, or real resident records.
 - Lint PHP, check JS syntax, and test role permissions, login, reports, files, and map features before merging.
+
+## Code review and commit conventions
+
+- Create one focused commit per change, using `fix:`, `docs:`, `test:`, or `chore:` in the message.
+- Summarize which behavior changed and how it was checked; do not call untested changes a verified fix.
+- Avoid committing personal credentials, live resident records, database dumps, and uploaded evidence.
+- Ask a teammate to review changes involving roles, CSRF, SQL queries, photo access, or migrations.
+- Run `php -l` on changed PHP files and `node --check public/assets/js/app.js` for JavaScript changes before merging when those runtimes are available.

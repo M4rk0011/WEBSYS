@@ -9,10 +9,6 @@ if (!$currentUser || !$currentUser->isActive) {
     http_response_code(401);
     exit();
 }
-if (!isset($_SESSION["user_id"]) || !findUser((string) $_SESSION["user_id"])) {
-    http_response_code(401);
-    exit();
-}
 $report = is_string($_GET["report"] ?? null) ? findReport($_GET["report"]) : null;
 $name = $_GET["name"] ?? null;
 if (

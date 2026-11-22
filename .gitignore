@@ -7,3 +7,25 @@
 
 /storage/place-photos/*
 !/storage/place-photos/.gitkeep
+
+# Local editor, OS and backup files (do not commit working copies)
+.idea/
+.vscode/
+Thumbs.db
+*.swp
+*.swo
+*.log
+*.sql.bak
+*.dump
+*.zip
+*.tar.gz
+
+# Developer tooling and generated output
+.idea/
+.vscode/
+coverage/
+.phpunit.cache/
+.phpunit.result.cache
+*.log
+*.sqlite3
+Thumbs.db
