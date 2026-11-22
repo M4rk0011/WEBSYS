@@ -17,8 +17,12 @@ let previews = [];
 if (files)
   files.addEventListener("change", () => {
     const box = document.getElementById("photo-preview");
-    box.replaceChildren();
     previews.forEach(URL.revokeObjectURL);
+    if (!box) {
+      previews = [];
+      return;
+    }
+    box.replaceChildren();
     previews = [];
     for (const file of files.files) {
       if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) continue;
