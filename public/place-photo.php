@@ -10,7 +10,7 @@ if (!$currentUser || !$currentUser->isActive) { http_response_code(401); exit; }
 $id = is_string($_GET['id'] ?? null) ? $_GET['id'] : '';
 $place = directory('places')->find($id);
 if (!$place || !canSeePlace($place)) { http_response_code(404); exit; }
-$name = (string)$place['photo_name'];
+$name = (string)($place['photo_name'] ?? '');
 if (!validPhotoName($name) || !is_file(placePhotoDir() . '/' . $name)) { http_response_code(404); exit; }
 $mime = ['jpg'=>'image/jpeg', 'png'=>'image/png', 'webp'=>'image/webp'][pathinfo($name, PATHINFO_EXTENSION)];
 session_write_close();
