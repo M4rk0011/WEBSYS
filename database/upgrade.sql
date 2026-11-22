@@ -1,4 +1,3 @@
--- Upgrade script for an existing V3 database; back up data before running.
 -- Select your EXISTING database in phpMyAdmin before importing this file.
 -- Additive only: existing users, reports and attachments are retained.
 CREATE TABLE IF NOT EXISTS php_departments (id VARCHAR(40) PRIMARY KEY, name VARCHAR(150) NOT NULL UNIQUE);

@@ -1,8 +1,4 @@
 <?php
-/**
- * Initializes the application and loads shared models, helpers and services.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 declare(strict_types=1);
 date_default_timezone_set("Asia/Manila");
 if (PHP_SAPI !== "cli") {

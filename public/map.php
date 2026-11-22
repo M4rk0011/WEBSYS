@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the map page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Complaint map: handle the submitted form first, then display the HTML below.
 $page = "map";
 $pageTitle = "Complaint map";

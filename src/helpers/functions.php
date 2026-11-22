@@ -1,8 +1,4 @@
 <?php
-/**
- * Provides reusable application helper functions.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Shared small PHP functions: escaping, navigation, and the simple CRUD class wrappers.
 // Convert an array to an object so pages can use $record->field.
 function obj(array $a): object
@@ -143,11 +139,7 @@ function getSeverityInitial(string $value): string
 }
 function fmtdate($value): string
 {
-    if (!$value) {
-        return "";
-    }
-    $timestamp = strtotime((string) $value);
-    return $timestamp === false ? "" : date("M j, Y, g:i A", $timestamp);
+    return $value ? date("M j, Y, g:i A", strtotime($value)) : "";
 }
 // Read one form value safely as trimmed text.
 function post(string $key): string

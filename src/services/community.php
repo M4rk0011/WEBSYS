@@ -1,8 +1,4 @@
 <?php
-/**
- * Implements reusable business logic for community.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // The official hazard/evacuation map has not been supplied; staff add verified points.
 const PLACE_KINDS = [
     'hazard' => 'Hazard area',

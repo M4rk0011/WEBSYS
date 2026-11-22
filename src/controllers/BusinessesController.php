@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Businesses module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 $page = 'businesses';
 $pageTitle = 'Business establishment profiling';
 require_once __DIR__ . '/../middleware/init.php';

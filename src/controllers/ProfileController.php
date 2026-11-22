@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Profile module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Citizen profile: handle the submitted form first, then display the HTML below.
 $page = "profile";
 $pageTitle = "Citizen profile";

@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Announcements module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Public announcements: handle the submitted form first, then display the HTML below.
 $page = "announcements";
 $pageTitle = "Public announcements";

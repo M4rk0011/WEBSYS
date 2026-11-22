@@ -1,8 +1,4 @@
 <?php
-/**
- * Creates the shared PDO connection using environment/local configuration.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // DATABASE CONNECTION: change these values if your XAMPP settings are different.
 $host = "localhost";
 $user = "root";

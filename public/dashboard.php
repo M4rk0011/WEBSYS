@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the dashboard page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Community dashboard: handle the submitted form first, then display the HTML below.
 $page = "dashboard";
 $pageTitle = "Community dashboard";

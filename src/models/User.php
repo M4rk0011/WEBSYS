@@ -1,8 +1,4 @@
 <?php
-/**
- * Provides database operations for the User domain.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Simple OOP part: all account INSERT, SELECT and UPDATE queries are here.
 class User
 {

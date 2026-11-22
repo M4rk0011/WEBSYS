@@ -1,8 +1,4 @@
 <?php
-/**
- * Implements reusable business logic for photos.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Attachments live outside public/ and are only served to authenticated users.
 function photoDirectory(): string
 {

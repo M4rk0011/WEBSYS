@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the map places page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 require __DIR__ . '/../src/controllers/MapPlacesController.php';
 require __DIR__ . '/partials/header.php';
 ?>

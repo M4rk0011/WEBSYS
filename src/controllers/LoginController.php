@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Login module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // LOGIN: read the form, find the account with PDO, and check its password.
 $page = "login";
 $pageTitle = "Welcome";

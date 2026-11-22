@@ -1,8 +1,4 @@
 <?php
-/**
- * Implements reusable business logic for place photos.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Location marker images are private and served via place-photo.php.
 function placePhotoDir(): string
 {

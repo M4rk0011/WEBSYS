@@ -1,8 +1,4 @@
 <?php
-/**
- * Provides database operations for the BarangayDirectory domain.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Simple PDO CRUD used by the separate resident, business and location modules.
 // Only known table/field lists may be passed to this class.
 class BarangayDirectory

@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Users module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Accounts & verification: handle the submitted form first, then display the HTML below.
 $page = "users";
 $pageTitle = "Accounts & verification";

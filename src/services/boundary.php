@@ -1,8 +1,4 @@
 <?php
-/**
- * Implements reusable business logic for boundary.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // One shared reporting area for PHP validation AND the JavaScript map.
 // Coordinate order: [latitude, longitude]. The last point joins the first.
 // This is an APPROXIMATE trace of the red outline in the user's screenshot

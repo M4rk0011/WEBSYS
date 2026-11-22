@@ -1,4 +1,3 @@
-/* Shared browser behaviors: confirmations, form controls, previews, and map interactions. */
 "use strict";
 for (const b of document.querySelectorAll("[data-confirm]"))
   b.addEventListener("click", (e) => {
@@ -17,12 +16,8 @@ let previews = [];
 if (files)
   files.addEventListener("change", () => {
     const box = document.getElementById("photo-preview");
-    previews.forEach(URL.revokeObjectURL);
-    if (!box) {
-      previews = [];
-      return;
-    }
     box.replaceChildren();
+    previews.forEach(URL.revokeObjectURL);
     previews = [];
     for (const file of files.files) {
       if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) continue;

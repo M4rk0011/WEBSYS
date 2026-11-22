@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the analytics export page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 require __DIR__ . "/../src/services/service.php";
 $currentUser = isset($_SESSION["user_id"]) ? findUser((string) $_SESSION["user_id"]) : null;
 if (!$currentUser || !$currentUser->isActive || !canViewAnalytics()) {

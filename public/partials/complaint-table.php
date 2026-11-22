@@ -1,8 +1,4 @@
-<?php
-/**
- * Reusable UI partial for complaint table.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */ // $items contains only complaints the current account is allowed to view. ?>
+<?php // $items contains only complaints the current account is allowed to view. ?>
 <?php if (!$items): ?>
     <p class="empty">No complaints match this view.</p>
 <?php else: ?>

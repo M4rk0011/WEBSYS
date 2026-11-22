@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the index page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Home page and compatibility for old index.php?page=... bookmarks.
 // Normal links go directly to login.php, report.php, users.php, etc.
 $page = "dashboard";

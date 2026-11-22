@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Report module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Submit a complaint: handle the submitted form first, then display the HTML below.
 $page = "report";
 $pageTitle = "Submit a complaint";

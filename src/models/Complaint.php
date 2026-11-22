@@ -1,8 +1,4 @@
 <?php
-/**
- * Provides database operations for the Complaint domain.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Simple OOP part: this class keeps complaint database queries in one place.
 class Complaint
 {

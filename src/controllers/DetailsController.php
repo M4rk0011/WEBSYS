@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Details module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Complaint details: handle the submitted form first, then display the HTML below.
 $page = "details";
 $pageTitle = "Complaint details";

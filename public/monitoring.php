@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the monitoring page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Service monitoring: handle the submitted form first, then display the HTML below.
 $page = "monitoring";
 $pageTitle = "Service monitoring";

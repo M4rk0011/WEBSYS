@@ -1,4 +1,3 @@
--- Fresh-install database schema and demonstration seed data. Do not import over live records.
 -- Fresh local demonstration installation. All demo accounts use admin123.
 CREATE DATABASE IF NOT EXISTS barangay_service_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE barangay_service_system;

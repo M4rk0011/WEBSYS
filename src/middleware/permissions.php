@@ -1,8 +1,4 @@
 <?php
-/**
- * Applies shared initialization or authorization rules (permissions).
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // This file answers: who is allowed to open a page or change a complaint?
 // Hiding a button is not enough. The form handlers also call these functions.
 

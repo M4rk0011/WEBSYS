@@ -1,8 +1,4 @@
 <?php
-/**
- * Reusable UI partial for header.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Shared page frame: menus, title and notices. Page forms stay in the named PHP files.
 $items = [];
 if ($currentUser) {

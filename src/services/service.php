@@ -1,8 +1,4 @@
 <?php
-/**
- * Implements reusable business logic for service.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 require_once __DIR__ . "/../bootstrap.php";
 const ROLES = [
     "system_admin" => "System Administrator",

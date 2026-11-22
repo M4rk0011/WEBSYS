@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the MapPlaces module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 $page = 'map-places';
 $pageTitle = 'Manage map locations';
 require_once __DIR__ . '/../middleware/init.php';

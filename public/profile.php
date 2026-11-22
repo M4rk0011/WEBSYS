@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the profile page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Page display only. The controller above validates submitted forms and prepares data.
 require __DIR__ . "/../src/controllers/ProfileController.php";
 require __DIR__ . "/partials/header.php";

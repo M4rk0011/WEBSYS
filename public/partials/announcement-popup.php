@@ -1,8 +1,4 @@
 <?php
-/**
- * Reusable UI partial for announcement popup.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Only published, not-yet-dismissed messages are selected for this signed-in user.
 $announcement = nextAnnouncement($currentUser);
 

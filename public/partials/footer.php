@@ -1,8 +1,4 @@
-<?php
-/**
- * Reusable UI partial for footer.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */ if (!$authPage): 
+<?php if (!$authPage): 
  if ($currentUser) { require __DIR__ . '/announcement-popup.php'; } ?>
 <footer>Public Complaint, Citizen Feedback, and Government Service Monitoring System</footer>
 </main>

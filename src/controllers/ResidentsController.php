@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Residents module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 $page = 'residents';
 $pageTitle = 'Inhabitants profiling';
 require_once __DIR__ . '/../middleware/init.php';

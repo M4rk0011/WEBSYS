@@ -1,8 +1,4 @@
 <?php
-/**
- * Applies shared initialization or authorization rules (init).
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Every page loads this once: shared functions, login session and page access.
 require_once __DIR__ . "/../services/service.php";
 
@@ -11,7 +7,7 @@ $currentUser = null;
 if (isset($_SESSION["user_id"])) {
     $currentUser = findUser($_SESSION["user_id"]);
 }
-if (isset($_SESSION["user_id"]) && (!$currentUser || !$currentUser->isActive)) {
+if ($currentUser && !$currentUser->isActive) {
     unset($_SESSION["user_id"]);
     $currentUser = null;
 }

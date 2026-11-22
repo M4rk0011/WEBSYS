@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the businesses page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 require __DIR__ . '/../src/controllers/BusinessesController.php';
 require __DIR__ . '/partials/header.php';
 ?>

@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the residents page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // A private administrative resident registry; it is not the public account list.
 require __DIR__ . '/../src/controllers/ResidentsController.php';
 require __DIR__ . '/partials/header.php';

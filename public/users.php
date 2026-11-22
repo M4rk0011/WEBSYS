@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the users page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Page display only. The controller above validates submitted forms and prepares data.
 require __DIR__ . "/../src/controllers/UsersController.php";
 require __DIR__ . "/partials/header.php";

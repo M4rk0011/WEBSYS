@@ -1,8 +1,4 @@
 <?php
-/**
- * Handles requests and validation for the Signup module.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // SIGNUP: residents enter their details; the administrator verifies them later.
 $page = "register";
 $pageTitle = "Create an account";

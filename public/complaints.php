@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the complaints page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Complaints: handle the submitted form first, then display the HTML below.
 $page = "complaints";
 $pageTitle = "Complaints";

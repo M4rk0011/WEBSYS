@@ -1,8 +1,4 @@
 <?php
-/**
- * Public request handler or view for the analytics page.
- * Maintainer note: keep application logic unchanged when editing documentation.
- */
 // Reports & analytics: handle the submitted form first, then display the HTML below.
 $page = "analytics";
 $pageTitle = "Reports & analytics";
