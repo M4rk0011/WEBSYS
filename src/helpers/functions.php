@@ -143,7 +143,11 @@ function getSeverityInitial(string $value): string
 }
 function fmtdate($value): string
 {
-    return $value ? date("M j, Y, g:i A", strtotime($value)) : "";
+    if (!$value) {
+        return "";
+    }
+    $timestamp = strtotime((string) $value);
+    return $timestamp === false ? "" : date("M j, Y, g:i A", $timestamp);
 }
 // Read one form value safely as trimmed text.
 function post(string $key): string
