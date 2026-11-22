@@ -66,7 +66,7 @@ Security helpers remain in the same PHP code: prepared PDO statements, role & co
 - PHP syntax lint on every PHP file, JavaScript syntax, PHP require paths, local static asset references, source file coverage, and ZIP integrity are checked when this package is built.
 - Full running MySQL/XAMPP/browser workflows **have not been retested** after this restructuring; test login, signup, submission, roles, uploads, and export on your machine.
 - Vendor libraries are bundled locally as in the original V3; no dependency installation step is necessary.
-- **No GitHub commit or push** has been performed.
+- The organized V5 project is maintained in the `M4rk0011/WEBSYS` GitHub repository. Review commit history for the latest updates.
 
 
 ## Barangay recommendations added in this update
@@ -99,7 +99,7 @@ In the app, sign in as an administrator and look in the sidebar for **Inhabitant
 - The new business module tracks permit/renewal details but is **not integrated with official licensing systems**.
 - The new installation uses a simple PHP/PDO model and basic HTML forms; no framework or vendor install is needed.
 - PHP syntax and JavaScript checks were run, but **full MySQL workflow testing could not be performed in the build environment**. Test with XAMPP before demonstration or deployment; see `docs/TESTING-CHECKLIST.md`.
-- This package **does not modify GitHub**.
+- Source changes are tracked in GitHub; local deployment still requires separate XAMPP and database setup.
 
 ## GitHub V5 review notes
 
