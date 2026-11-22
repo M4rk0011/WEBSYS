@@ -1,0 +1,10 @@
+<?php
+header('Content-Type: text/plain; charset=utf-8');
+echo <<<'DOCUMENT'
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software to use, copy, modify, distribute, sublicense, and/or sell
+copies of the software, and to permit persons to whom the software is furnished
+to do so.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+DOCUMENT;

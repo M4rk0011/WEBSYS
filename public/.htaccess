@@ -1,0 +1,4 @@
+Options -Indexes
+<FilesMatch "^(\.htaccess|.*\.(sql|sqlite|bak|ini))$">
+Require all denied
+</FilesMatch>

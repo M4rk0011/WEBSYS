@@ -1,0 +1,48 @@
+VERIFICATION — SIMPLER PHP UPDATE, 8 November 2026
+
+136 real HTTP workflow checks passed using PHP 8.3 and a disposable PDO SQLite database.
+The SQL seed came from database.sql, adapting only MySQL CREATE DATABASE/USE and
+INSERT IGNORE syntax for SQLite. No production records or uploaded photos were used.
+
+Checked:
+- Login for all five roles, wrong passwords, signup and administrator verification.
+- Direct named PHP page access for all five roles and the older index.php bookmarks.
+- Admin/staff cannot submit complaints; residents cannot use staff/admin actions.
+- Prepared INSERT/UPDATE/DELETE queries, account/profile changes and deactivation.
+- Complaint submission/editing, photo upload, reference number and ownership checks.
+- Server-side map boundary validation and permission-filtered map/photo data.
+- Scoped photo/PDF/CSV access, assignments, priorities, deadlines and status changes.
+- Feedback, analytics, reopening, audit history and complaint/photo deletion.
+- Published announcement popups, per-account X dismissal, persistence after logout,
+  edited notices returning, stale X rejection, draft hiding and deletion.
+- CSRF validation on the direct form routes; no PHP warnings or fatal errors.
+
+15 Chromium workflow checks passed using the real HTML forms:
+- Login error placement, signup, administrator verification and sign out.
+- Resident complaint form, outside-location rejection and photo submission.
+- Administrator assignment form and announcement publication.
+- Resident announcement popup and persistent X dismissal.
+- Red boundary, administrator photo cards, protected photos in map popups,
+  mobile layout and no JavaScript errors.
+
+All 56 PHP files passed syntax checks. Browser JavaScript passed its syntax check.
+The green login and administrator map designs were visually inspected.
+
+DATABASE AND CODE COMPATIBILITY
+No schema changes, SQL reimport or new installer are needed for this refactor.
+Use the freshly extracted source folder and preserve your config.php and uploads.
+The old action dispatcher/views were replaced with named pages containing their
+own PHP form handling and HTML. Old index.php?page=... bookmarks still work.
+The existing JSON record format and password hashes are preserved.
+
+LIMITS
+The automated database tests used SQLite, not a running XAMPP/MySQL instance.
+Verify the MySQL connection on your own XAMPP installation after updating.
+The red reporting area is an approximate trace of the supplied screenshot, not
+an officially surveyed barangay boundary. Both PHP and JavaScript check the same
+polygon. Online tiles need internet; the bundled saved street reference works offline.
+Verification is manual residency approval, not email/SMS OTP.
+Announcements appear at the next page load/login, not via real-time push.
+No repository commits or pushes were made.
+
+Archived source notes from the user's original V3 (not a new test report).
