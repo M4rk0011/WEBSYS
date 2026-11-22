@@ -1,0 +1,166 @@
+BARANGAY LOWER GENERAL LUNA — BASIC PHP / PDO / OOP
+
+RUN IN XAMPP — NO SETUP PAGE
+1. Extract the barangay-basic folder into C:\xampp\htdocs.
+2. Start Apache and MySQL in XAMPP.
+3. Open http://localhost/phpmyadmin.
+4. Click Import, select database.sql from this folder, then Go.
+5. Open http://localhost/barangay-basic/login.php.
+
+Default database: barangay_service_system
+Default connection: host localhost, user root, blank password.
+If your settings differ, copy config.example.php to config.php and edit it.
+Requires PHP 8.1+ and PDO MySQL. No Angular, npm or Composer setup is needed.
+
+DEMO ACCOUNTS — USERNAME / PASSWORD
+System Administrator: admin / admin123
+LGU Administrator: lguadmin / admin123
+Department Head: departmenthead / admin123
+Government Personnel: personnel / admin123
+Community Resident: resident / admin123
+Change demo passwords before using actual resident information.
+The demo head and personnel belong to Public Works & Infrastructure.
+
+UPDATING AN EXISTING INSTALLATION
+Back up your database, config.php and storage/uploads first.
+Use the freshly extracted folder rather than merging old and new source files.
+Copy your existing config.php and storage/uploads into this new folder.
+If you edited only the old dbconn.php, put those connection settings into this
+version's dbconn.php or config.php before opening the site.
+Do not import database.sql into an existing installation just to update its code.
+If upgrading from the original DATABASE2 system, select its existing database in
+phpMyAdmin and import upgrade.sql. This only adds missing service tables.
+If you already used the previous eight-module version, no new tables are needed.
+Dismissed announcements are stored in the existing user record.
+When there was no old config.php, copy config.example.php and set its DSN to your
+old database name (often concern_report_system).
+Old admin/security/user roles still map to system admin/personnel/resident.
+Assign departments to imported staff and complaints; verify imported residents.
+
+WHO CAN DO WHAT?
+System Administrator:
+- Manage accounts (except editing the protected system account), departments,
+  announcements, assignments, deadlines, status, analytics and report deletion.
+- View all complaints, photos and PDF exports.
+- Cannot submit complaints or rewrite a resident's submission/evidence.
+LGU Administrator:
+- Manage resident/staff accounts, verification, departments, announcements and work.
+- Cannot create/change system or LGU administrator accounts.
+- Cannot submit complaints or rewrite resident submissions.
+Department Head:
+- View/process their own department's complaints; assign staff within that department.
+- View department-only monitoring, analytics and CSV reports.
+- Cannot manage accounts, announcements, departments or submit complaints.
+Government Personnel:
+- View/process only complaints assigned to them in their current department.
+- No account/department/announcement management, complaint submission or analytics.
+Community Resident:
+- Register, edit own profile and change password.
+- After verification, submit complaints and edit their own pending complaints.
+- View only their own complaints/photos/PDFs; give feedback after resolution.
+- No staff actions, administration or analytics.
+All signed-in roles may read published announcements and dismiss their own popup.
+
+ANNOUNCEMENTS
+Administrators can save a draft or publish an announcement.
+On the next login/page load, each account sees its unread published message.
+Press X (or Escape) to dismiss it for that account; another account is unaffected.
+The next unread message appears if there are several. Dismissal survives logout.
+If the administrator changes the title, body or type, the update appears again.
+Drafts/deleted messages do not appear. Dismissed messages remain on Announcements.
+Published announcements are also readable by visitors on announcements.php.
+
+CODE GUIDE — SIMPLER PAGE-BY-PAGE PHP
+The page's PHP form handling is at the top; its HTML form is below it.
+Read login.php and departments.php first: their queries follow this pattern:
+    $sql = "SELECT * FROM php_users WHERE username = :username";
+    $prep = $pdo->prepare($sql);
+    $prep->execute([":username" => $username]);
+    $row = $prep->fetch();
+
+1. dbconn.php: $host, $user, $pass, $db, $dsn and the $pdo connection.
+2. login.php: prepared SELECT, password check, session and the login form.
+3. signup.php: resident registration handling and its form together.
+4. departments.php: basic INSERT / UPDATE queries and the department forms.
+5. announcements.php: INSERT / UPDATE / DELETE and announcement HTML.
+6. report.php: validate the resident's complaint/location and upload photos.
+7. details.php: view, assign, process, give feedback and delete a complaint.
+8. users.php and profile.php: account administration and profile forms.
+9. dashboard.php, complaints.php, map.php, monitoring.php, analytics.php:
+   normal PHP pages with their own display code and simple foreach loops.
+10. classes/User.php and classes/Complaint.php: small OOP classes containing
+    readable SELECT / INSERT / UPDATE queries with named PDO placeholders.
+11. app/init.php: shared login checks and the Sign out / announcement X forms.
+12. app/permissions.php: role and ownership checks used by every page.
+13. app/service.php / app/bootstrap.php: labels, calculations and shared helpers.
+14. includes/: repeated header, footer, complaint table and popup HTML only.
+15. app/boundary.php / app/photos.php: location and image validation.
+16. style.php and script.php: CSS and browser JavaScript served as PHP assets.
+
+The old app/portal.php, action dispatcher and separate app/views/ folder are removed.
+index.php opens the home page and supports old index.php?page=... bookmarks.
+
+HELPERS USED IN THE PAGES
+post("name") reads a submitted text value safely and trims surrounding spaces.
+required("name", 100) checks that text is present and within its maximum length.
+e($value) is a short helper for htmlspecialchars(), used in existing display code.
+go("dashboard") redirects with header() and then stops the old page with exit.
+demand($allowed) stops an action if its permission check fails.
+checkFormToken() checks the hidden CSRF token before changing records.
+
+The project is still a PDO/OOP hybrid: PDO is an object, the two data classes are
+simple OOP, and pages use ordinary procedural PHP. No framework is needed.
+The existing JSON-in-MySQL record format is kept so old accounts/reports still work.
+The body column holds grouped fields; json_decode reads them, json_encode saves them.
+Names/descriptions are saved as text and escaped when displayed, preventing double
+escaping. Passwords stay hashed. Deletion uses POST plus CSRF and permission checks.
+Do not paste the student example's "sit" database name over this project's database.
+No SQL change or reimport is needed for this code-simplification update.
+
+The third-party Leaflet and FPDF library code is retained, with its licenses.
+.htaccess files protect private source/configuration/evidence in Apache/XAMPP.
+Do not delete those protection files. No setup.php or SQL-download PHP endpoints
+are included: use the plain database.sql/upgrade.sql files directly in phpMyAdmin.
+
+MAP, PHOTOS AND METRICS
+The map now opens on the red Lower General Luna reporting area.
+The outline is an approximate trace of the user-supplied screenshot, aligned to
+nearby OpenStreetMap roads. It is NOT an official surveyed administrative boundary;
+the publicly mapped OSM administrative outline differs from the supplied screenshot.
+The single coordinate list is in app/boundary.php. Editing it updates both the drawn
+outline and server validation. Reference road data: OpenStreetMap contributors,
+https://www.openstreetmap.org/copyright (ODbL); road way 85417112, relation 15777029.
+
+Residents must choose a point inside/on the red line to submit or edit a complaint.
+Clicks/drags outside the line are rejected; PHP also rejects out-of-area coordinates
+if JavaScript is disabled or a request is manually forged. New forms have no default
+complaint pin, so residents must select a location. This checks the selected point,
+not the resident's physical GPS position or the truth of the submitted address.
+
+Administrators see all in-area complaints on map.php. Pins open complaint details,
+status, resident name and every attached photo. The side list shows a photo preview
+and an Open complaint link. Complaints at the same coordinates share a counted pin.
+Residents see only their own records; staff keep their assigned/department scope.
+Photos still use the authenticated photo.php endpoint; uploads are not made public.
+Older out-of-area/missing-location complaints stay in Complaints and are counted in
+an explanatory map notice. They are not silently deleted or moved into the area.
+No new SQL import or database migration is needed for this map update.
+
+Street/satellite imagery needs internet. If imagery fails, use Retry map or Saved
+street map. The included map-reference.png is a georeferenced road/building snapshot
+rendered from OpenStreetMap data retrieved 8 November 2026, not live imagery. It stays
+underneath online tiles and works without internet. The red outline, coordinate
+restriction and complaint markers work with both modes. Map reference data is from
+https://api.openstreetmap.org/api/0.6/map?bbox=120.596,16.413,120.600,16.418
+© OpenStreetMap contributors, ODbL: https://www.openstreetmap.org/copyright
+Up to five JPG/PNG/WebP photos, 2 MB each. Enable PHP fileinfo and PDO MySQL.
+Recommended php.ini: upload_max_filesize=2M; post_max_size=16M; max_file_uploads=20.
+Restart Apache after changing php.ini. Back up the database AND storage/uploads.
+Verification is manual residency approval, not OTP/email verification.
+Response time = submission to first processing update. Resolution time = submission
+to current resolution. Missing timestamps/feedback are excluded from averages.
+Analytics dates filter submission date; resolution rate = resolved / all selected.
+
+See verification.php for tested behavior and limits. No GitHub push was made.
+
+Archived source notes from the user's original V3 (not a new test report).

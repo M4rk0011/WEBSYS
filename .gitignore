@@ -1,6 +1,9 @@
-*.log
-*.zip
+/config/local.php
+/storage/uploads/*
+!/storage/uploads/.gitkeep
+*.sqlite
+.env
 .DS_Store
-Thumbs.db
-.vscode/
-.idea/
+
+/storage/place-photos/*
+!/storage/place-photos/.gitkeep

@@ -1,76 +1,106 @@
-# Barangay Lower General Luna Concern Report System
+# Lower General Luna — WEBSYS V3 (Organized + Barangay Recommendations)
 
-PHP 8.1+ / PDO / MySQL or MariaDB / XAMPP. No Angular or Node build required.
+This is your original V3 complaint monitoring system, **reorganized using the folder layout of WEBSYS_FINAL_PROJECT and extended with the requested barangay features**. No TB-MAS or unrelated code was copied. No Composer, npm, or Angular required.
 
-## Run in XAMPP (manual database import)
+## Folder guide (simple PHP/PDO + OOP)
 
-1. Extract the `lower-general-luna-full` folder into `C:\xampp\htdocs\lower-general-luna-full`.
+```text
+LOWER-GENERAL-LUNA-V3-ORGANIZED/
+├── index.php                # opens public/index.php
+├── config/
+│   ├── db.php               # one PDO connection
+│   └── local.example.php    # copy to local.php if needed
+├── database/
+│   ├── database.sql         # fresh installation
+│   └── upgrade.sql          # older DATABASE2 installations only
+├── src/
+│   ├── bootstrap.php        # loads the classes + helpers
+│   ├── models/              # User.php, Complaint.php and BarangayDirectory.php: CRUD
+│   ├── controllers/         # form processing & validation, including directories
+│   ├── middleware/          # sign-in, CSRF, page/role access
+│   ├── services/            # complaint logic, photos, map boundary
+│   ├── helpers/             # small reused functions
+│   └── vendor/fpdf/         # PDF library
+├── public/
+│   ├── index.php            # homepage / legacy routing
+│   ├── login.php, signup.php, dashboard.php, ...
+│   ├── partials/            # header, footer, map & popup
+│   └── assets/
+│       ├── css/app.css
+│       ├── js/app.js
+│       ├── img/
+│       └── vendor/leaflet/  # map CSS/JS/images
+├── storage/uploads/         # protected complaint photos
+├── storage/place-photos/    # protected landmark/hazard photos
+└── docs/                    # archived original V3 notes
+```
+
+**How a page works:** Open `public/login.php`, which includes `src/controllers/LoginController.php` for login processing; the view then loads the shared header/footer. Database operations stay in `src/models/`. This is a simple and readable version of the MVC separation in your sample.
+
+## Run on XAMPP
+
+1. Extract this folder to `C:\xampp\htdocs\LOWER-GENERAL-LUNA-V3-ORGANIZED`.
 2. Start **Apache** and **MySQL** in XAMPP.
-3. Open `http://localhost/phpmyadmin`, select **Import**, choose the project's `database.sql`, and click **Go**. The SQL creates `concern_report_system`, tables and demo accounts. Existing matching records are retained.
-4. Open **http://localhost/lower-general-luna-full/**. This opens the login page. There is no web setup wizard.
-5. Log in with `admin` / `admin123`, `student` / `student123`, or `security` / `security123`. These are local demo credentials; replace them before using real reports.
+3. In **phpMyAdmin**, import `database/database.sql` **only for a fresh installation**.
+4. Open `http://localhost/LOWER-GENERAL-LUNA-V3-ORGANIZED/` or `/public/login.php`.
+5. If your MySQL port/credentials/database differ, copy `config/local.example.php` to `config/local.php` and edit the PDO DSN, username and password. **Never commit local.php.**
 
-Default connection: host `127.0.0.1`, database `concern_report_system`, username `root`, blank password. For a different MySQL port/password, copy `config.example.php` to `config.php` and edit it. If keeping a previous installation's config.php, check its database name. SQL import is still required.
+The included demo SQL may contain example users and weak demo passwords. **Change all demo passwords** and remove demo data before deploying or storing real residents' information.
 
-Alternative manual import from **XAMPP Shell**:
+### Updating a previous V3 deployment
 
-```bat
-mysql -u root < C:\xampp\htdocs\lower-general-luna-full\database.sql
-```
+- Back up your database and `storage/uploads` photos first.
+- Do **not** reimport `database.sql` over an existing database; this update preserves the same database tables, JSON record format and hashed passwords.
+- If you already customized `dbconn.php` or `config.php`, move its DSN/user/password into `config/local.php` in this new folder.
+- Copy your existing `storage/uploads` into this new project's `storage/uploads`.
+- The original root PHP pages now live under `public/`. Existing `public/index.php?page=...` query bookmarks still work. Reconfigure deployment document root to `public/` when possible.
 
-## Make typing just localhost open this application
+## Features retained from V3
 
-Keep the project in the folder above. Back up your existing `C:\xampp\htdocs\index.php`, then copy **localhost/index.php** from this project to **C:\xampp\htdocs\index.php**. Only copy that single launcher file. Open **http://localhost/**. It forwards to the app login, or to the dashboard if already logged in.
+Resident signup and verification, five roles, PDO user/complaint CRUD, **administrator submission approval**, assignments and processing, feedback, announcements, service monitoring, CSV/PDF reporting, photo evidence, and the red Lower General Luna reporting area. **The polygon is approximate**, not an official administrative boundary.
 
-This optional change replaces XAMPP's default homepage. Other project folders and `/phpmyadmin` still have their own URLs. If Apache uses port 8080, include `:8080` in localhost URLs.
+Security helpers remain in the same PHP code: prepared PDO statements, role & complaint-access checks, CSRF tokens, password hashing, guarded photo downloads, photo upload validation, and private upload storage.
 
-## Photos
+## What has been verified
 
-Create or edit a concern and select photos under **Photos**. Up to five JPG, PNG or WebP photos, 2 MB each, maximum 20 megapixels. A preview appears before submission. Existing photos can be removed during editing. Saved photos appear in report details and can be opened at full size.
+- PHP syntax lint on every PHP file, JavaScript syntax, PHP require paths, local static asset references, source file coverage, and ZIP integrity are checked when this package is built.
+- Full running MySQL/XAMPP/browser workflows **have not been retested** after this restructuring; test login, signup, submission, roles, uploads, and export on your machine.
+- Vendor libraries are bundled locally as in the original V3; no dependency installation step is necessary.
+- **No GitHub commit or push** has been performed.
 
-Files are validated on the server, assigned random names, stored in `storage/uploads`, and served through an authenticated endpoint. Report owners and staff can edit attachments. Deleting a report also removes its photos. Back up the database **and** storage/uploads together.
 
-In XAMPP's `php.ini`, enable `fileinfo` and set:
+## Barangay recommendations added in this update
 
-```ini
-file_uploads=On
-upload_max_filesize=2M
-post_max_size=16M
-max_file_uploads=20
-```
+1. **Inhabitants profiling** — `public/residents.php`: admin-only create, search, edit, delete and print resident records. This directory is separate from portal user accounts. No real resident profiles have been preloaded.
+2. **Business profiling** — `public/businesses.php`: owner, category, address, permit number, renewal date, and notes. Filter and print listings.
+3. **Business CCTV monitoring** — tracking fields for yes/no/not checked and camera count. This is a checklist, **not live CCTV streaming**.
+4. **Announcements and notifications** — the existing announcement editor and account-specific dismissal are kept. An unread announcement shows `Announcements · New` and appears in the existing popup. This is **in-app**, not an SMS or email notification service.
+5. **Complaint approval** — new complaints require administrator approval before assignment/processing. Rejected submissions can be corrected and resubmitted. Pre-existing V3 complaints are treated as approved to avoid breaking active records.
+6. **Barangay spot map** — the current map stays centered on the project reporting area. Its border is **approximate and not officially surveyed**.
+7. **Hazard identification** — administrators can add typed hazard markers and a description. **No hazard locations are invented or automatically marked as verified.**
+8. **Evacuation centers, roads, clinics and landmarks** — same map marker editor supports locations, photo uploads and details. Draft markers are admin-only until verified.
+9. **Official barangay logo** — added the provided image to sidebar, sign-in and registration screens.
+10. **Simpler interface** — searchable directories, one-page CRUD forms, dashboard shortcuts, printable lists, filterable map layers.
 
-Restart Apache after changing php.ini. New file selections must be selected again after a validation error. Never replace your existing storage folder while updating an installation.
+## Database setup for these new modules
 
-## Concern map
+**New installation:** Import `database/database.sql` in phpMyAdmin (creates the 7 required tables, five demo accounts and departments). Do not import this as an update into an existing database.
 
-The map, saved pins, tile fallback and location validation are retained from the source system. The green rectangle remains the ORIGINAL reporting area around 16.41556, 120.5975. It is not an official Barangay Lower General Luna boundary. This release changes the branding, not the geographic service area. Confirm the actual barangay coordinates/boundary before using it for barangay-wide submissions; both browser and server validation need to be updated together.
+**Existing V3 database:** Take a backup in phpMyAdmin, **select the existing `barangay_service_system` database**, then import `database/upgrade.sql`. Its `CREATE TABLE IF NOT EXISTS` statements add the three new tables without deleting existing records. Back up existing `storage/uploads/` too.
 
-Street and satellite imagery require internet access. Leaflet is bundled locally; when tile services fail, a clearly labeled coordinate grid remains available.
+All new tables start empty. For a safe demo, enter made-up profiles; do not enter actual residents' personal data unless authorized by the barangay and an appropriate data-protection process exists. Protect the administrator accounts and change weak demo passwords before real use.
 
-## Development and verification
+In the app, sign in as an administrator and look in the sidebar for **Inhabitants profiling**, **Business & CCTV records** and **Map spots & hazards**. Review incoming complaints under **Complaint details → Administrator review**. To add a map spot: open Map spots & hazards → fill in the fields → click the map for coordinates → upload an optional image → save as Draft → verify with the barangay → change to Verified. The map then displays it to signed-in residents.
 
-`python tests/integration.py` runs HTTP regression tests with a temporary SQLite database. Production/XAMPP uses the manually imported MySQL database. Test attachments use a temporary upload directory.
+### Important limitations and testing
 
-`php -S localhost:8000 -t public public/router.php` starts the PHP development server after the database has been imported and configured.
+- Map outlines, hazard points and evacuation sites are **not certified**: their locations must be reviewed with barangay officials. Neighboring barangays remain visible only as background context. Marker coordinates are validated against the approximate outline.
+- Date of birth and other profiling information are **admin-only** within this prototype. Real use requires an approved privacy policy, strict access controls, backups, and record retention rules. The app is a student prototype, not an authorized municipal registry or official hazard warning service.
+- The new business module tracks permit/renewal details but is **not integrated with official licensing systems**.
+- The new installation uses a simple PHP/PDO model and basic HTML forms; no framework or vendor install is needed.
+- PHP syntax and JavaScript checks were run, but **full MySQL workflow testing could not be performed in the build environment**. Test with XAMPP before demonstration or deployment; see `docs/TESTING-CHECKLIST.md`.
+- This package **does not modify GitHub**.
 
-Do not expose app/, bin/, storage/, tests/, database.sql or config.php through a web server. XAMPP/Apache access rules are included; for other servers, use public/ as the document root.
+## GitHub V5 review notes
 
-## Map update (v5)
-
-Street view now starts with Esri (the same host as satellite), followed by OpenStreetMap and CARTO if a provider fails. Alternate view tries CARTO, OpenStreetMap, then Esri. If all street sources fail, satellite is shown with an explicit notice. If no provider responds, a labeled coordinate grid remains available. Partial tile failures and stalled tile requests now trigger recovery, including after zooming or panning. Esri street tiles use native zoom 18 and scale at zoom 19.
-
-**Existing installation:** back up your database, config.php and storage/uploads first. Copy the updated app/ and public/ folders into your installation, keeping your original config.php and storage/uploads. Do not import database.sql when you only want to rebrand an existing installation. Press Ctrl+F5 after replacing files.
-
-## Barangay branding release
-
-The full PHP source was taken from M4rk0011/DATABASE2 (master, aa38692d938f30fd359f1d7aab0af699dce08401). No GitHub repositories were modified. The supplied barangay hall photo replaces the university photo. Login, registration, navigation, reports and PDF headers use the barangay name and green theme.
-
-Resident and Barangay Personnel are display labels. Internal user/security role keys, demo usernames/passwords, data fields and access rules remain compatible with existing records. Existing database content is not rewritten; older records may still contain university names. Included demo records are illustrative, not real barangay reports. All demo email addresses use the reserved .example domain.
-
-## Walkable team studio
-
-The login/index page includes a 3D team studio. It is not loaded on the dashboard or other portal pages. Click **Enter the studio**, use WASD to walk, drag to look, and approach a character to read their contribution. Mobile visitors can hold the on-screen movement buttons. Escape or **Pause / Exit** releases the game controls.
-
-The studio uses local WebGL geometry with rounded avatars, lighting, floor shadows, and a furnished interior. Select **Performance** if **High** graphics feels slow. If WebGL is unavailable, the text team credits remain accessible. No database changes or external assets are required.
-
-Developer checks: `node tests/crew-game.cjs` exercises movement and lifecycle behavior; `python tests/crew-shaders.py` optionally compiles and links the lighting shaders on Linux with Mesa EGL.
+This source tree was imported from the group-provided `V5.zip`. Source files were moved into the repository root without changing their internal relative paths. Maintainer comments explain responsibilities; they do not alter behavior. Review the pull request before merging because the earlier GitHub layout differs substantially. Run the checklist in `docs/TESTING-CHECKLIST.md`, including database backup/migration steps, before deployment.
